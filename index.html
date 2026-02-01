@@ -125,7 +125,7 @@ button{
 </head>
 <body>
 <audio id="bgm" loop>
-  <source src="Stephen Dawes - Teenage Dream (Lyric Video).mp3" type="audio/mpeg">
+  <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card">
@@ -195,6 +195,14 @@ function launchConfetti(){
         createHeart();
     }
 }
+</script>
+<script>
+document.addEventListener("click", function () {
+  const audio = document.getElementById("bgm");
+  audio.volume = 0.6;
+  audio.muted = false;
+  audio.play().catch(err => console.log(err));
+}, { once: true });
 </script>
 
 </body>
