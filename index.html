@@ -18,14 +18,7 @@
 
 body {
     height: 100vh;
-    background: linear-gradient(135deg, 
-        #ffafbd 0%, 
-        #ffc3a0 25%, 
-        #ffafbd 50%, 
-        #ffc3a0 75%, 
-        #ffafbd 100%);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0);
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -33,267 +26,45 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
-@keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
 .card {
-    background: linear-gradient(145deg, #ffffff, #fff5f7);
+    background: white;
     padding: 50px 40px;
-    border-radius: 30px;
+    border-radius: 25px;
     width: 90%;
     max-width: 800px;
     min-height: 450px;
     text-align: center;
-    box-shadow: 
-        0 20px 60px rgba(255, 77, 109, 0.3),
-        0 10px 30px rgba(0, 0, 0, 0.1),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.8);
-    animation: cardEntrance 1.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
     position: relative;
-    z-index: 20;
+    z-index: 100;
     border: 1px solid rgba(255, 255, 255, 0.5);
-    overflow: hidden;
 }
 
-.card::before {
-    content: '';
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: sparkle 8s linear infinite;
-    z-index: -1;
-}
-
-@keyframes cardEntrance {
-    0% {
-        opacity: 0;
-        transform: scale(0.8) translateY(50px) rotate(-5deg);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1) translateY(0) rotate(0);
-    }
-}
-
-@keyframes sparkle {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-/* Photo Container with enhanced design */
-.photo-container {
-    position: relative;
-    display: inline-block;
-    margin-bottom: 25px;
-    animation: photoFloat 4s ease-in-out infinite;
-}
-
-@keyframes photoFloat {
-    0%, 100% { transform: translateY(0) rotate(0); }
-    50% { transform: translateY(-10px) rotate(1deg); }
-}
-
-.photo-frame {
-    width: 160px;
-    height: 160px;
-    border-radius: 50%;
-    padding: 8px;
-    background: linear-gradient(45deg, #ff4d6d, #ff758c, #ff4d6d);
-    position: relative;
-    margin: 0 auto;
-    animation: frameGlow 3s ease-in-out infinite;
-}
-
-@keyframes frameGlow {
-    0%, 100% { box-shadow: 0 0 20px rgba(255, 77, 109, 0.5); }
-    50% { box-shadow: 0 0 40px rgba(255, 77, 109, 0.8); }
-}
-
-#cutePhoto {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid white;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.heart-behind {
-    position: absolute;
-    top: -20px;
-    left: -30px;
-    font-size: 100px;
-    color: rgba(255, 77, 109, 0.2);
-    z-index: -1;
-    animation: heartFloat 6s ease-in-out infinite;
-}
-
-@keyframes heartFloat {
-    0%, 100% { transform: rotate(-20deg) scale(1); }
-    50% { transform: rotate(-25deg) scale(1.1); }
-}
-
-/* Text Styling */
-h1 {
-    color: #ff4d6d;
-    margin: 20px 0 10px;
-    font-size: 3rem;
-    font-family: 'Dancing Script', cursive;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-    animation: textGlow 2s ease-in-out infinite alternate;
-}
-
-@keyframes textGlow {
-    from { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); }
-    to { text-shadow: 0 0 20px rgba(255, 77, 109, 0.4); }
-}
-
-#question {
-    font-size: 1.8rem;
-    font-weight: 600;
-    color: #333;
-    margin: 30px 0 40px;
-    line-height: 1.4;
-    font-family: 'Poppins', sans-serif;
-    padding: 15px 25px;
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 20px;
-    display: inline-block;
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    animation: questionPulse 3s ease-in-out infinite;
-}
-
-@keyframes questionPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.02); }
-}
-
-/* Buttons Styling */
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 50px;
-    margin-top: 40px;
-    position: relative;
-    z-index: 10;
-}
-
-button {
-    border: none;
-    padding: 18px 40px;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    font-family: 'Poppins', sans-serif;
-    position: relative;
-    overflow: hidden;
-    min-width: 160px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-    transition: 0.5s;
-}
-
-button:hover::before {
-    left: 100%;
-}
-
-.yesBtn {
-    background: linear-gradient(45deg, #ff4d6d, #ff758c);
-    color: white;
-    border: 2px solid #ff4d6d;
-}
-
-.yesBtn:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 15px 30px rgba(255, 77, 109, 0.4);
-    background: linear-gradient(45deg, #ff758c, #ff4d6d);
-}
-
-.noBtn {
-    background: linear-gradient(45deg, #e0e0e0, #f5f5f5);
-    color: #666;
-    border: 2px solid #ddd;
-}
-
-.noBtn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-/* Yes Text Animation */
-.yesText {
-    display: none;
-    margin-top: 30px;
-    font-size: 2.5rem;
-    color: #ff4d6d;
-    font-weight: bold;
-    font-family: 'Dancing Script', cursive;
-    animation: celebration 2s ease-in-out;
-    text-shadow: 0 0 20px rgba(255, 77, 109, 0.5);
-}
-
-@keyframes celebration {
-    0% { transform: scale(0); opacity: 0; }
-    50% { transform: scale(1.2); }
-    100% { transform: scale(1); opacity: 1; }
-}
-
-/* Floating Hearts */
-.heart-float {
-    position: absolute;
-    color: rgba(255, 77, 109, 0.6);
-    animation: float 8s linear infinite;
-    z-index: 5;
-    filter: drop-shadow(0 0 5px rgba(255, 77, 109, 0.5));
-    pointer-events: none;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(100vh) rotate(0deg) scale(0.5);
-        opacity: 0;
-    }
-    10% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 0.7;
-    }
-    100% {
-        transform: translateY(-100px) rotate(360deg) scale(1);
-        opacity: 0;
-    }
-}
-
-/* Decorative Elements */
+/* Rose Petals Styling - यह जरूरी है */
 .rose-petal {
     position: absolute;
-    width: 20px;
-    height: 20px;
-    background: linear-gradient(45deg, #ff4d6d, #ff758c);
-    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-    animation: petalFall 10s linear infinite;
+    width: 25px;
+    height: 25px;
+    background: linear-gradient(45deg, #ff4d6d, #ff9eb5);
+    border-radius: 50% 0 50% 50%;
+    transform: rotate(45deg);
     opacity: 0.7;
     z-index: 1;
+    animation: petalFall 8s linear infinite;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+}
+
+/* Different petal shapes */
+.rose-petal:nth-child(3n) {
+    background: linear-gradient(45deg, #ff758c, #ffccd5);
+    border-radius: 50% 50% 0 50%;
+}
+
+.rose-petal:nth-child(5n) {
+    background: linear-gradient(45deg, #ff4d6d, #ff8fab);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
 }
 
 @keyframes petalFall {
@@ -313,12 +84,140 @@ button:hover::before {
     }
 }
 
-/* Responsive Design */
+.photo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 25px;
+}
+
+.photo-frame {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    padding: 8px;
+    background: linear-gradient(45deg, #ff4d6d, #ff758c, #ff4d6d);
+    position: relative;
+    margin: 0 auto;
+    box-shadow: 0 10px 30px rgba(255, 77, 109, 0.4);
+}
+
+#cutePhoto {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+}
+
+.heart-behind {
+    position: absolute;
+    top: -20px;
+    left: -30px;
+    font-size: 100px;
+    color: rgba(255, 77, 109, 0.2);
+    z-index: -1;
+}
+
+h1 {
+    color: #ff4d6d;
+    margin: 20px 0 10px;
+    font-size: 3rem;
+    font-family: 'Dancing Script', cursive;
+}
+
+#question {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: #333;
+    margin: 30px 0 40px;
+    line-height: 1.4;
+    font-family: 'Poppins', sans-serif;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 40px;
+}
+
+button {
+    border: none;
+    padding: 15px 35px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 150px;
+}
+
+.yesBtn {
+    background: linear-gradient(45deg, #ff4d6d, #ff758c);
+    color: white;
+    border: 2px solid #ff4d6d;
+}
+
+.yesBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(255, 77, 109, 0.4);
+}
+
+.noBtn {
+    background: #f5f5f5;
+    color: #666;
+    border: 2px solid #ddd;
+}
+
+.noBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.yesText {
+    display: none;
+    margin-top: 30px;
+    font-size: 2.5rem;
+    color: #ff4d6d;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    animation: celebration 1s ease-in-out;
+}
+
+@keyframes celebration {
+    0% { transform: scale(0); opacity: 0; }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Floating Hearts */
+.heart-float {
+    position: absolute;
+    color: rgba(255, 77, 109, 0.6);
+    animation: float 6s linear infinite;
+    z-index: 5;
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive */
 @media (max-width: 768px) {
     .card {
         padding: 30px 20px;
         min-height: 400px;
-        margin: 20px;
     }
     
     h1 {
@@ -327,7 +226,6 @@ button:hover::before {
     
     #question {
         font-size: 1.5rem;
-        padding: 12px 20px;
     }
     
     .photo-frame {
@@ -342,38 +240,7 @@ button:hover::before {
     }
     
     button {
-        padding: 15px 30px;
         min-width: 200px;
-    }
-    
-    .yesText {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .card {
-        padding: 25px 15px;
-        min-height: 380px;
-    }
-    
-    h1 {
-        font-size: 2rem;
-    }
-    
-    #question {
-        font-size: 1.3rem;
-    }
-    
-    .photo-frame {
-        width: 120px;
-        height: 120px;
-    }
-    
-    button {
-        padding: 12px 25px;
-        min-width: 180px;
-        font-size: 1.1rem;
     }
 }
 </style>
@@ -387,7 +254,8 @@ button:hover::before {
     <div class="photo-container">
         <div class="heart-behind">❤️</div>
         <div class="photo-frame">
-            <img id="cutePhoto" src="babyy.jpg" alt="Cute Photo" />
+            <!-- Replace with your image URL or path -->
+            <img id="cutePhoto" src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" alt="Cute Photo" />
         </div>
     </div>
 
@@ -399,7 +267,7 @@ button:hover::before {
 
     <div class="buttons" id="buttons">
         <button class="yesBtn" onclick="sayYes()">Yes ❤️</button>
-        <button class="noBtn" onmouseover="runAway(this)" ontouchstart="runAway(this)">No 😢</button>
+        <button class="noBtn" onmouseover="runAway(this)">No 😢</button>
     </div>
     <div class="yesText" id="yesText">
         YAYYYY! You made me the happiest! ❤️
@@ -407,133 +275,138 @@ button:hover::before {
 </div>
 
 <script>
+// Initialize page
 window.onload = () => {
-    // Add rose petals
-    createRosePetals();
+    // Start creating rose petals
+    createRosePetals(10);
+    setInterval(() => createRosePetals(3), 2000);
 };
 
-const audio = document.getElementById("bgm");
+// Audio handling
+const audio = document.getElementById('bgm');
 audio.volume = 0.5;
-audio.loop = true;
 
-// Play audio on first interaction
+// Play audio on first click
 document.addEventListener('click', function initAudio() {
-    audio.currentTime = 48;
     audio.play().catch(e => console.log("Audio play failed:", e));
     document.removeEventListener('click', initAudio);
 }, { once: true });
 
-// No button movement
+// No button run away function
 function runAway(btn) {
-    btn.style.position = "absolute";
-    btn.style.left = Math.random() * (window.innerWidth - 200) + "px";
-    btn.style.top = Math.random() * (window.innerHeight - 100) + "px";
+    const card = document.querySelector('.card');
+    const cardRect = card.getBoundingClientRect();
+    
+    // Make sure button stays within viewport
+    const maxX = window.innerWidth - btn.offsetWidth;
+    const maxY = window.innerHeight - btn.offsetHeight;
+    
+    // Don't let button go inside the card
+    let newX, newY;
+    do {
+        newX = Math.random() * maxX;
+        newY = Math.random() * maxY;
+    } while (
+        newX > cardRect.left - 100 && 
+        newX < cardRect.right + 100 && 
+        newY > cardRect.top - 100 && 
+        newY < cardRect.bottom + 100
+    );
+    
+    btn.style.position = "fixed";
+    btn.style.left = newX + "px";
+    btn.style.top = newY + "px";
     btn.style.transition = "all 0.5s ease";
 }
 
 // Yes button clicked
 function sayYes() {
-    const buttons = document.getElementById("buttons");
-    const yesText = document.getElementById("yesText");
+    const buttons = document.getElementById('buttons');
+    const yesText = document.getElementById('yesText');
     
-    // Animate buttons disappearing
-    buttons.style.opacity = "0";
-    buttons.style.transform = "scale(0.8)";
+    // Fade out buttons
+    buttons.style.opacity = '0';
+    buttons.style.transform = 'scale(0.8)';
     
     setTimeout(() => {
-        buttons.style.display = "none";
-        yesText.style.display = "block";
+        buttons.style.display = 'none';
+        yesText.style.display = 'block';
         
         // Enhanced celebration
-        launchConfetti();
-        createRosePetals(30);
+        for (let i = 0; i < 50; i++) {
+            setTimeout(() => createHeart(), i * 50);
+        }
         
-        // Play celebration sound if available
-        const celebrationSound = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3');
-        celebrationSound.volume = 0.3;
-        celebrationSound.play().catch(e => console.log("Celebration sound error:", e));
+        // Extra rose petals for celebration
+        for (let i = 0; i < 20; i++) {
+            setTimeout(() => createRosePetals(1), i * 100);
+        }
         
-        // Change background gradient
-        document.body.style.background = "linear-gradient(135deg, #ffc3a0, #ffafbd, #ffc3a0)";
-    }, 500);
+        // Change background for celebration
+        document.body.style.background = 'linear-gradient(135deg, #ffc3a0, #ffafbd, #ffc3a0)';
+        
+        // Play celebration sound (optional)
+        try {
+            const celebration = new Audio('https://assets.mixkit.co/sfx/preview/mixkit-happy-crowd-laugh-464.mp3');
+            celebration.volume = 0.3;
+            celebration.play();
+        } catch (e) {
+            console.log("Celebration sound error:", e);
+        }
+    }, 300);
 }
 
-// Floating hearts
+// Create floating hearts
 function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart-float";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 30 + 20) + "px";
-    heart.style.animationDuration = (Math.random() * 5 + 8) + "s";
-    heart.style.opacity = Math.random() * 0.5 + 0.3;
+    const heart = document.createElement('div');
+    heart.className = 'heart-float';
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = (Math.random() * 30 + 20) + 'px';
+    heart.style.animationDuration = (Math.random() * 4 + 4) + 's';
     document.body.appendChild(heart);
     
-    setTimeout(() => heart.remove(), 10000);
+    setTimeout(() => heart.remove(), 6000);
 }
 
-// Rose petals
-function createRosePetals(count = 15) {
+// Create rose petals - यह function जरूरी है
+function createRosePetals(count = 1) {
     for (let i = 0; i < count; i++) {
         setTimeout(() => {
-            const petal = document.createElement("div");
-            petal.className = "rose-petal";
-            petal.style.left = Math.random() * 100 + "vw";
-            petal.style.width = (Math.random() * 15 + 10) + "px";
-            petal.style.height = petal.style.width;
-            petal.style.animationDuration = (Math.random() * 5 + 8) + "s";
-            petal.style.opacity = Math.random() * 0.7 + 0.3;
+            const petal = document.createElement('div');
+            petal.className = 'rose-petal';
+            
+            // Random position
+            petal.style.left = Math.random() * 100 + 'vw';
+            
+            // Random size
+            const size = Math.random() * 15 + 15;
+            petal.style.width = size + 'px';
+            petal.style.height = size + 'px';
+            
+            // Random rotation
+            petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+            
+            // Random animation duration
+            petal.style.animationDuration = (Math.random() * 5 + 8) + 's';
+            
+            // Random delay
+            petal.style.animationDelay = Math.random() * 2 + 's';
+            
             document.body.appendChild(petal);
             
-            setTimeout(() => petal.remove(), 10000);
+            // Remove after animation completes
+            setTimeout(() => {
+                if (petal.parentNode) {
+                    petal.remove();
+                }
+            }, 10000);
         }, i * 200);
     }
 }
 
-// Continuous hearts
-setInterval(createHeart, 500);
-
-// Celebration function
-function launchConfetti() {
-    for (let i = 0; i < 100; i++) {
-        setTimeout(() => {
-            createHeart();
-        }, i * 50);
-    }
-    
-    // Create burst effect
-    for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-            const heart = document.createElement("div");
-            heart.className = "heart-float";
-            heart.innerHTML = ["❤️", "💖", "💕", "💗", "💓"][Math.floor(Math.random() * 5)];
-            heart.style.left = "50%";
-            heart.style.top = "50%";
-            heart.style.fontSize = (Math.random() * 40 + 30) + "px";
-            heart.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
-            heart.style.animation = `none`;
-            
-            // Burst animation
-            setTimeout(() => {
-                const angle = Math.random() * Math.PI * 2;
-                const distance = 200 + Math.random() * 300;
-                const x = Math.cos(angle) * distance;
-                const y = Math.sin(angle) * distance;
-                
-                heart.style.transition = `all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275)`;
-                heart.style.transform = `translate(${x}px, ${y}px) rotate(${angle * 180 / Math.PI + 360}deg)`;
-                heart.style.opacity = "0";
-                
-                setTimeout(() => heart.remove(), 1000);
-            }, 10);
-            
-            document.body.appendChild(heart);
-        }, i * 20);
-    }
-}
-
-// Create initial rose petals
-setInterval(() => createRosePetals(3), 3000);
+// Create some initial hearts
+setInterval(createHeart, 1000);
 </script>
 </body>
 </html>
