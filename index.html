@@ -149,36 +149,31 @@ button{
     </div>
 </div>
 <script>
-/* Show name immediately */
 window.onload = () => {
     document.getElementById("name").innerHTML = "Hey Bushra❤️";
-
-    const song = document.getElementById("song");
-    song.volume = 0;
-    song.muted = false;
-
-    let vol = 0;
-    const fade = setInterval(() => {
-        if (vol < 0.6) {
-            vol += 0.02;
-            song.volume = vol;
-        } else {
-            clearInterval(fade);
-        }
-    }, 100);
 };
+
+document.addEventListener("click", function () {
+  const audio = document.getElementById("bgm");
+  audio.volume = 0.6;
+  audio.muted = false;
+  audio.play().catch(err => console.log(err));
+}, { once: true });
+
 /* No button moves randomly */
 function runAway(btn){
     btn.style.position = "absolute";
     btn.style.left = Math.random()*70 + "vw";
     btn.style.top = Math.random()*70 + "vh";
 }
+
 /* Yes clicked */
 function sayYes(){
     document.getElementById("buttons").style.display="none";
     document.getElementById("yesText").style.display="block";
     launchConfetti();
 }
+
 /* Floating hearts */
 function createHeart(){
     const heart = document.createElement("div");
@@ -190,20 +185,12 @@ function createHeart(){
     setTimeout(()=>heart.remove(),6000);
 }
 setInterval(createHeart,400);
+
 function launchConfetti(){
     for(let i=0;i<35;i++){
         createHeart();
     }
 }
 </script>
-<script>
-document.addEventListener("click", function () {
-  const audio = document.getElementById("bgm");
-  audio.volume = 0.6;
-  audio.muted = false;
-  audio.play().catch(err => console.log(err));
-}, { once: true });
-</script>
-
 </body>
 </html>
