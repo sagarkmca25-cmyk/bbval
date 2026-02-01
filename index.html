@@ -152,18 +152,23 @@ button{
 window.onload = () => {
     document.getElementById("name").innerHTML = "Hey Bushra❤️";
 };
+const audio = document.getElementById("bgm");
+audio.volume = 0.6;
+audio.muted = false;
 
-document.addEventListener("click", function () {
-    const audio = document.getElementById("bgm");
-    
-    // Unmute and set volume first
-    audio.volume = 0.6;
-    audio.muted = false;
+// Wait until the audio is ready to seek
+audio.addEventListener("canplay", function startFrom48() {
+    audio.currentTime = 48; // jump to 48 seconds
+    audio.play().catch(err => console.log("Audio play error:", err));
+    audio.removeEventListener("canplay", startFrom48); // remove listener so it doesn’t repeat
+});
 
-    // Play first, then jump to 48s
-    audio.play().then(() => {
-        audio.currentTime = 48; // now it will start from 48s
-    }).catch(err => console.log("Audio play error:", err));
+// Start loading the audio (needed for canplay to fire)
+audio.load();
+
+// Optional: trigger on first click (so browser allows playback)
+document.addEventListener("click", () => {
+    audio.play().catch(() => {}); // click triggers play, if blocked
 }, { once: true });
 
 /* No button moves randomly */
