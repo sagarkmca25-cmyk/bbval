@@ -22,22 +22,21 @@ body{
     align-items:center;
     justify-content:center;
 }
-
-/* Card fix: visible, above hearts */
 .card{
     background:white;
     padding:60px;
     border-radius:22px;
     width:90%;
-    max-width:750px;
-    min-height:350px;
+    max-width:750px;  /* bigger width */
+    min-height:350px; /* optional for taller card */
     text-align:center;
     box-shadow:0 25px 50px rgba(0,0,0,.2);
-    position: relative;  /* important for z-index */
-    z-index: 10;         /* above hearts */
-    opacity:1;           /* remove fade in issue */
+    animation:fadeIn 2s forwards;
+    opacity:0;
 }
-
+@keyframes fadeIn{
+    to{opacity:1}
+}
 .heart{
     font-size:60px;
     animation:beat 1.2s infinite;
@@ -51,17 +50,20 @@ h1{
     margin:15px 0;
     font-family: 'Segoe UI', sans-serif;
 }
+/* Question */
 #question{
     font-size:1.45rem;
     font-weight:700;
     color:#000;
     margin:30px 0 35px;
 }
+
 .photo-container {
     position: relative;
     display: inline-block;
     margin-bottom: 20px;
 }
+
 #cutePhoto{
     width: 120px;
     height: 120px;
@@ -71,6 +73,7 @@ h1{
     z-index: 2;
     position: relative;
 }
+
 .heart-behind {
     position: absolute;
     top: 15px;
@@ -80,6 +83,7 @@ h1{
     z-index: 1;
     transform: rotate(-20deg);
 }
+
 .buttons{
     display:flex;
     justify-content:center;
@@ -112,24 +116,14 @@ button{
     position:absolute;
     color:rgba(255,255,255,0.8);
     animation:float 6s linear infinite;
-    z-index:5; /* below card */
 }
 @keyframes float{
     from{transform:translateY(100vh);opacity:1}
     to{transform:translateY(-10vh);opacity:0}
 }
-
-/* Responsive */
-@media (max-width: 400px){
-    .card{padding:40px 15px;}
-    #question{font-size:1.2rem;margin:20px 0 25px;}
-    .buttons{flex-direction:column;gap:20px;}
-    #cutePhoto{width:100px;height:100px;}
-}
 </style>
 </head>
 <body>
-
 <audio id="bgm" loop>
   <source src="song.mp3" type="audio/mpeg">
 </audio>
@@ -137,7 +131,6 @@ button{
 <div class="card">
     <div class="photo-container">
         <div class="heart-behind">❤️</div>
-        <!-- Use correct path to image, GitHub raw URL recommended -->
         <img id="cutePhoto" src="babyy.jpg" alt="Cute Photo" />
     </div>
 
@@ -155,24 +148,32 @@ button{
         YAYYYY❤️<br>
     </div>
 </div>
-
 <script>
 window.onload = () => {
     document.getElementById("name").innerHTML = "Hey Bushra❤️";
 };
 
-// Audio setup
 const audio = document.getElementById("bgm");
 audio.volume = 0.6;
 audio.muted = false;
-audio.loop = true;
+audio.loop = true; // keep loop if you want
 
-// Start audio exactly at 48s on first click anywhere
+// Only play on first click
 document.addEventListener("click", function playFrom48() {
-    audio.currentTime = 48;
+    audio.currentTime = 48;  // jump to 48s
     audio.play().catch(err => console.log("Audio play error:", err));
+    
+    // remove listener so it only happens once
     document.removeEventListener("click", playFrom48);
-});
+}, { once: true });
+
+// Start loading the audio (needed for canplay to fire)
+audio.load();
+
+// Optional: trigger on first click (so browser allows playback)
+document.addEventListener("click", () => {
+    audio.play().catch(() => {}); // click triggers play, if blocked
+}, { once: true });
 
 /* No button moves randomly */
 function runAway(btn){
