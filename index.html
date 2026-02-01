@@ -152,16 +152,20 @@ button{
 window.onload = () => {
     document.getElementById("name").innerHTML = "Hey Bushra❤️";
 };
+
 const audio = document.getElementById("bgm");
 audio.volume = 0.6;
 audio.muted = false;
+audio.loop = true; // keep loop if you want
 
-// Wait until the audio is ready to seek
-audio.addEventListener("canplay", function startFrom48() {
-    audio.currentTime = 48; // jump to 48 seconds
+// Only play on first click
+document.addEventListener("click", function playFrom48() {
+    audio.currentTime = 48;  // jump to 48s
     audio.play().catch(err => console.log("Audio play error:", err));
-    audio.removeEventListener("canplay", startFrom48); // remove listener so it doesn’t repeat
-});
+    
+    // remove listener so it only happens once
+    document.removeEventListener("click", playFrom48);
+}, { once: true });
 
 // Start loading the audio (needed for canplay to fire)
 audio.load();
