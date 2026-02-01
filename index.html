@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Bushra❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Romantic Font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+body{
+    height:100vh;
+    background: linear-gradient(135deg, #ff99aa, #ffb3c6);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.card{
+    background:white;
+    padding:60px;
+    border-radius:22px;
+    width:90%;
+    max-width:750px;  /* bigger width */
+    min-height:350px; /* optional for taller card */
+    text-align:center;
+    box-shadow:0 25px 50px rgba(0,0,0,.2);
+    animation:fadeIn 2s forwards;
+    opacity:0;
+}
+@keyframes fadeIn{
+    to{opacity:1}
+}
+.heart{
+    font-size:60px;
+    animation:beat 1.2s infinite;
+}
+@keyframes beat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.15)}
+}
+h1{
+    color:#ff4d6d;
+    margin:15px 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+/* Question */
+#question{
+    font-size:1.45rem;
+    font-weight:700;
+    color:#000;
+    margin:30px 0 35px;
+}
+
+.photo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#cutePhoto{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    z-index: 2;
+    position: relative;
+}
+
+.heart-behind {
+    position: absolute;
+    top: 15px;
+    left: -35px;
+    font-size: 80px;
+    color: rgba(255, 77, 109, 0.3);
+    z-index: 1;
+    transform: rotate(-20deg);
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:30px;
+}
+button{
+    border:none;
+    padding:12px 22px;
+    border-radius:25px;
+    font-size:1rem;
+    cursor:pointer;
+}
+.yesBtn{
+    background:#ff4d6d;
+    color:white;
+}
+.noBtn{
+    background:#ddd;
+    position:relative;
+}
+.yesText{
+    display:none;
+    margin-top:20px;
+    font-size:1.6rem;
+    color:#ff4d6d;
+    font-weight:bold;
+}
+.heart-float{
+    position:absolute;
+    color:rgba(255,255,255,0.8);
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    from{transform:translateY(100vh);opacity:1}
+    to{transform:translateY(-10vh);opacity:0}
+}
+</style>
+</head>
+<body>
+<audio id="song" autoplay muted loop>
+    <source src="Stephen Dawes - Teenage Dream (Lyric Video).mp3" type="audio/mpeg">
+</audio>
+
+<div class="card">
+    <div class="photo-container">
+        <div class="heart-behind">❤️</div>
+        <img id="cutePhoto" src="babyy.jpg" alt="Cute Photo" />
+    </div>
+
+    <h1 id="name"></h1>
+
+    <p id="question">
+        Bushra, will you be my Valentine?
+    </p>
+
+    <div class="buttons" id="buttons">
+        <button class="yesBtn" onclick="sayYes()">Yes 👉🏻👈🏻</button>
+        <button class="noBtn" onmouseover="runAway(this)">No</button>
+    </div>
+    <div class="yesText" id="yesText">
+        YAYYYY❤️<br>
+    </div>
+</div>
+<script>
+/* Show name immediately */
+window.onload = () => {
+    document.getElementById("name").innerHTML = "Hey Bushra❤️";
+
+    const song = document.getElementById("song");
+    song.volume = 0;
+    song.muted = false;
+
+    let vol = 0;
+    const fade = setInterval(() => {
+        if (vol < 0.6) {
+            vol += 0.02;
+            song.volume = vol;
+        } else {
+            clearInterval(fade);
+        }
+    }, 100);
+};
+/* No button moves randomly */
+function runAway(btn){
+    btn.style.position = "absolute";
+    btn.style.left = Math.random()*70 + "vw";
+    btn.style.top = Math.random()*70 + "vh";
+}
+/* Yes clicked */
+function sayYes(){
+    document.getElementById("buttons").style.display="none";
+    document.getElementById("yesText").style.display="block";
+    launchConfetti();
+}
+/* Floating hearts */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.className="heart-float";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*20+20+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,400);
+function launchConfetti(){
+    for(let i=0;i<35;i++){
+        createHeart();
+    }
+}
+</script>
+
+</body>
+</html>
