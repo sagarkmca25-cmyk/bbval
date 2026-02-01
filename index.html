@@ -22,37 +22,20 @@ body{
     align-items:center;
     justify-content:center;
 }
-.card {
-    background: white;
-    padding: 40px 20px;   /* thoda kam padding for mobile */
-    border-radius: 22px;
-    width: 90%;           /* already responsive */
-    max-width: 500px;     /* reduce max-width for mobile */
-    min-height: auto;     /* height auto instead of fixed */
-    text-align: center;
-    box-shadow: 0 25px 50px rgba(0,0,0,.2);
-    animation: fadeIn 2s forwards;
-    opacity: 0;
+.card{
+    background:white;
+    padding:60px;
+    border-radius:22px;
+    width:90%;
+    max-width:750px;
+    min-height:350px;
+    text-align:center;
+    box-shadow:0 25px 50px rgba(0,0,0,.2);
+    animation:fadeIn 2s forwards;
+    opacity:0;
 }
-
-/* Photo container resize for mobile */
-.photo-container img {
-    width: 100px;
-    height: 100px;
-}
-
-@media (max-width: 400px) {
-    .card {
-        padding: 30px 15px;
-    }
-    #question {
-        font-size: 1.2rem;   /* thoda chhota text for small screens */
-        margin: 20px 0 25px;
-    }
-    .buttons {
-        gap: 20px;
-        flex-direction: column; /* stack buttons on very small screens */
-    }
+@keyframes fadeIn{
+    to{opacity:1}
 }
 .heart{
     font-size:60px;
@@ -67,20 +50,17 @@ h1{
     margin:15px 0;
     font-family: 'Segoe UI', sans-serif;
 }
-/* Question */
 #question{
     font-size:1.45rem;
     font-weight:700;
     color:#000;
     margin:30px 0 35px;
 }
-
 .photo-container {
     position: relative;
     display: inline-block;
     margin-bottom: 20px;
 }
-
 #cutePhoto{
     width: 120px;
     height: 120px;
@@ -90,7 +70,6 @@ h1{
     z-index: 2;
     position: relative;
 }
-
 .heart-behind {
     position: absolute;
     top: 15px;
@@ -100,7 +79,6 @@ h1{
     z-index: 1;
     transform: rotate(-20deg);
 }
-
 .buttons{
     display:flex;
     justify-content:center;
@@ -138,9 +116,18 @@ button{
     from{transform:translateY(100vh);opacity:1}
     to{transform:translateY(-10vh);opacity:0}
 }
+
+/* Responsive */
+@media (max-width: 400px){
+    .card{padding:40px 15px;}
+    #question{font-size:1.2rem;margin:20px 0 25px;}
+    .buttons{flex-direction:column;gap:20px;}
+    #cutePhoto{width:100px;height:100px;}
+}
 </style>
 </head>
 <body>
+
 <audio id="bgm" loop>
   <source src="song.mp3" type="audio/mpeg">
 </audio>
@@ -165,32 +152,24 @@ button{
         YAYYYY❤️<br>
     </div>
 </div>
+
 <script>
 window.onload = () => {
     document.getElementById("name").innerHTML = "Hey Bushra❤️";
 };
 
+// Audio setup
 const audio = document.getElementById("bgm");
 audio.volume = 0.6;
 audio.muted = false;
-audio.loop = true; // keep loop if you want
+audio.loop = true;
 
-// Only play on first click
+// Start audio exactly at 48s on first click anywhere
 document.addEventListener("click", function playFrom48() {
-    audio.currentTime = 48;  // jump to 48s
+    audio.currentTime = 48;
     audio.play().catch(err => console.log("Audio play error:", err));
-    
-    // remove listener so it only happens once
-    document.removeEventListener("click", playFrom48);
-}, { once: true });
-
-// Start loading the audio (needed for canplay to fire)
-audio.load();
-
-// Optional: trigger on first click (so browser allows playback)
-document.addEventListener("click", () => {
-    audio.play().catch(() => {}); // click triggers play, if blocked
-}, { once: true });
+    document.removeEventListener("click", playFrom48); // run once
+});
 
 /* No button moves randomly */
 function runAway(btn){
