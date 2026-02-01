@@ -154,11 +154,21 @@ window.onload = () => {
 };
 
 document.addEventListener("click", function () {
-  const audio = document.getElementById("bgm");
-  audio.currentTime = 48; 
-  audio.volume = 0.6;
-  audio.muted = false;
-  audio.play().catch(err => console.log(err));
+    const audio = document.getElementById("bgm");
+
+    // Make sure metadata is loaded before jumping
+    audio.addEventListener('loadedmetadata', () => {
+        audio.currentTime = 48; // start at 48 seconds
+        audio.volume = 0.6;
+        audio.play().catch(err => console.log("Audio play error:", err));
+    });
+
+    // If metadata already loaded
+    if (audio.readyState >= 1) {
+        audio.currentTime = 48;
+        audio.volume = 0.6;
+        audio.play().catch(err => console.log("Audio play error:", err));
+    }
 }, { once: true });
 
 /* No button moves randomly */
