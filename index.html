@@ -155,20 +155,15 @@ window.onload = () => {
 
 document.addEventListener("click", function () {
     const audio = document.getElementById("bgm");
+    
+    // Unmute and set volume first
+    audio.volume = 0.6;
+    audio.muted = false;
 
-    // Make sure metadata is loaded before jumping
-    audio.addEventListener('loadedmetadata', () => {
-        audio.currentTime = 48; // start at 48 seconds
-        audio.volume = 0.6;
-        audio.play().catch(err => console.log("Audio play error:", err));
-    });
-
-    // If metadata already loaded
-    if (audio.readyState >= 1) {
-        audio.currentTime = 48;
-        audio.volume = 0.6;
-        audio.play().catch(err => console.log("Audio play error:", err));
-    }
+    // Play first, then jump to 48s
+    audio.play().then(() => {
+        audio.currentTime = 48; // now it will start from 48s
+    }).catch(err => console.log("Audio play error:", err));
 }, { once: true });
 
 /* No button moves randomly */
