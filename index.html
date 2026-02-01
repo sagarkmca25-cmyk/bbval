@@ -1,138 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="description" content="food shop">
-    <title>the little taco shop</title>
-    <link rel="stylesheet" href="main.css">
-    <link rel="icon" href="shop.avif" type="image/x-icon">
-    <!-- <style>
-        #dance{
-            background-color: rgb(219, 108, 108);
-        }
-    </style> -->
+<meta charset="UTF-8">
+<title>Bushra❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Romantic Font -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
+body{
+    height:100vh;
+    background: linear-gradient(135deg, #ff99aa, #ffb3c6);
+    overflow:hidden;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.card{
+    background:white;
+    padding:60px;
+    border-radius:22px;
+    width:90%;
+    max-width:750px;  /* bigger width */
+    min-height:350px; /* optional for taller card */
+    text-align:center;
+    box-shadow:0 25px 50px rgba(0,0,0,.2);
+    animation:fadeIn 2s forwards;
+    opacity:0;
+}
+@keyframes fadeIn{
+    to{opacity:1}
+}
+.heart{
+    font-size:60px;
+    animation:beat 1.2s infinite;
+}
+@keyframes beat{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.15)}
+}
+h1{
+    color:#ff4d6d;
+    margin:15px 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+/* Question */
+#question{
+    font-size:1.45rem;
+    font-weight:700;
+    color:#000;
+    margin:30px 0 35px;
+}
+
+.photo-container {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#cutePhoto{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    z-index: 2;
+    position: relative;
+}
+
+.heart-behind {
+    position: absolute;
+    top: 15px;
+    left: -35px;
+    font-size: 80px;
+    color: rgba(255, 77, 109, 0.3);
+    z-index: 1;
+    transform: rotate(-20deg);
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:40px;
+    margin-top:30px;
+}
+button{
+    border:none;
+    padding:12px 22px;
+    border-radius:25px;
+    font-size:1rem;
+    cursor:pointer;
+}
+.yesBtn{
+    background:#ff4d6d;
+    color:white;
+}
+.noBtn{
+    background:#ddd;
+    position:relative;
+}
+.yesText{
+    display:none;
+    margin-top:20px;
+    font-size:1.6rem;
+    color:#ff4d6d;
+    font-weight:bold;
+}
+.heart-float{
+    position:absolute;
+    color:rgba(255,255,255,0.8);
+    animation:float 6s linear infinite;
+}
+@keyframes float{
+    from{transform:translateY(100vh);opacity:1}
+    to{transform:translateY(-10vh);opacity:0}
+}
+</style>
 </head>
-
 <body>
-    <header>
-        <p>
-        <h1>Welcome To Little Taco Shop</h1>
-        </p>
-        <p>
-        <nav>
-            <ul>
-                <li><a href="#hello">About LTS</a></li>
-                <li><a href="#dance">Our menu</a></li>
-                <li><a href="hours.html" target="_blank">Store hour</a></li>
-                <li><a href="contact.html" target="_blank">Contact Us</a></li>
+<audio id="bgm" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
 
+<div class="card">
+    <div class="photo-container">
+        <div class="heart-behind">❤️</div>
+        <img id="cutePhoto" src="babyy.jpg" alt="Cute Photo" />
+    </div>
 
-            </ul>
-        </nav>
-        </p>
+    <h1 id="name"></h1>
 
-        <p>
-            <picture>
-                <img src="food.jpg" alt="food image" width="300" title="thand h bhai">
-                <br>
-                <caption> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<b>tacos and
-                        drink</b></caption>
-            </picture>
-            <hr>
-        </p>
+    <p id="question">
+        Bushra, will you be my Valentine?
+    </p>
 
-    </header>
-    <main>
-        <section id="hello">
-            <h2>About <abbr title="the little taco shop"></abbr> LTS</h2>
-            <p>LTS was found in <time datetime="2026">2026</time>. Our shop was build from <strong>a love of
-                    tacos</strong> 🌮🌮🌮🌮. We hope <br>
-                our shop adds a unique and interesting place to our little town.</p>
-            <h3>Taco Triva</h3>
-            <aside>
-                <details>
+    <div class="buttons" id="buttons">
+        <button class="yesBtn" onclick="sayYes()">Yes 👉🏻👈🏻</button>
+        <button class="noBtn" onmouseover="runAway(this)">No</button>
+    </div>
+    <div class="yesText" id="yesText">
+        YAYYYY❤️<br>
+    </div>
+</div>
+<script>
+window.onload = () => {
+    document.getElementById("name").innerHTML = "Hey Bushra❤️";
+};
 
-                    here we love to be in with you inside :> da da da da dhub dhub gup gup
-                    <summary>When did tacos first appear in the United States?</summary>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores soluta expedita ea magni <br>
-                        commodi ipsum neque distinctio cum recusandae delectus harum, <br> officiis enim possimus sequi,
-                        dolorem suscipit ut quos in! (source : <a
-                            href="https://www.youtube.com/watch?v=n-zc1_ebv9Y&list=RDn-zc1_ebv9Y&start_radio=1">click
-                            here</a>)
-                    </p>
+const audio = document.getElementById("bgm");
+audio.volume = 0.6;
+audio.muted = false;
+audio.loop = true; // keep loop if you want
 
-                </details>
-            </aside>
-            <hr>
-        </section>
-        <section id ="dance"> 
-            <h2>Our Menu</h2>
+// Only play on first click
+document.addEventListener("click", function playFrom48() {
+    audio.currentTime = 48;  // jump to 48s
+    audio.play().catch(err => console.log("Audio play error:", err));
+    
+    // remove listener so it only happens once
+    document.removeEventListener("click", playFrom48);
+}, { once: true });
 
+// Start loading the audio (needed for canplay to fire)
+audio.load();
 
-            <table>
-                <caption>Our Tacos</caption>
+// Optional: trigger on first click (so browser allows playback)
+document.addEventListener("click", () => {
+    audio.play().catch(() => {}); // click triggers play, if blocked
+}, { once: true });
 
+/* No button moves randomly */
+function runAway(btn){
+    btn.style.position = "absolute";
+    btn.style.left = Math.random()*70 + "vw";
+    btn.style.top = Math.random()*70 + "vh";
+}
 
-                <thead>
+/* Yes clicked */
+function sayYes(){
+    document.getElementById("buttons").style.display="none";
+    document.getElementById("yesText").style.display="block";
+    launchConfetti();
+}
 
-                    <tr>
-                        <th>Tacos</th>
-                        <th>Quality</th>
-                        <th>Price</th>
+/* Floating hearts */
+function createHeart(){
+    const heart = document.createElement("div");
+    heart.className="heart-float";
+    heart.innerHTML="❤️";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=Math.random()*20+20+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),6000);
+}
+setInterval(createHeart,400);
 
-                    </tr>
-
-
-                </thead>
-                <tbody>
-                    <tr>
-                        <th rowspan="3" scope="row">crunchy</th>
-                        <td>1</td>
-                        <td>$1.2</td>
-
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>$2.3</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>$3.1</td>
-                    </tr>
-
-                    <tr>
-                        <th rowspan="3" scope="row">Soft</th>
-                        <td>4</td>
-                        <td>$9</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>$1.7</td>
-
-                    </tr>
-                    <tr>
-                        <td>6</td>
-                        <td>$8.4</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <td colspan="3"> &nbsp; &nbsp; chips &amp; kurkure</td>
-                    </tr>
-                </tfoot>
-            </table>
-        </section>
-        <p>
-            <a href="#">back to home</a>
-        </p>
-    </main>
-    <footer>
-        <hr>
-        <p>copyright &copy; the little tacos shop</p>
-    </footer>
-
+function launchConfetti(){
+    for(let i=0;i<35;i++){
+        createHeart();
+    }
+}
+</script>
 </body>
-
 </html>
