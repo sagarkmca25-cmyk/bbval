@@ -22,20 +22,37 @@ body{
     align-items:center;
     justify-content:center;
 }
-.card{
-    background:white;
-    padding:60px;
-    border-radius:22px;
-    width:90%;
-    max-width:750px;  /* bigger width */
-    min-height:350px; /* optional for taller card */
-    text-align:center;
-    box-shadow:0 25px 50px rgba(0,0,0,.2);
-    animation:fadeIn 2s forwards;
-    opacity:0;
+.card {
+    background: white;
+    padding: 40px 20px;   /* thoda kam padding for mobile */
+    border-radius: 22px;
+    width: 90%;           /* already responsive */
+    max-width: 500px;     /* reduce max-width for mobile */
+    min-height: auto;     /* height auto instead of fixed */
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0,0,0,.2);
+    animation: fadeIn 2s forwards;
+    opacity: 0;
 }
-@keyframes fadeIn{
-    to{opacity:1}
+
+/* Photo container resize for mobile */
+.photo-container img {
+    width: 100px;
+    height: 100px;
+}
+
+@media (max-width: 400px) {
+    .card {
+        padding: 30px 15px;
+    }
+    #question {
+        font-size: 1.2rem;   /* thoda chhota text for small screens */
+        margin: 20px 0 25px;
+    }
+    .buttons {
+        gap: 20px;
+        flex-direction: column; /* stack buttons on very small screens */
+    }
 }
 .heart{
     font-size:60px;
